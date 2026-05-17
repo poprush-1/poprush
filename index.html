@@ -1,0 +1,622 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>POPRUSH | Every Pop Hits Different.</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Plus+Jakarta+Sans:wght@400&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="pictures/Poprush-logo.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+  <!-- TopNavBar -->
+  <header class="bg-surface/90 backdrop-blur-md sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm">
+    <div class="flex justify-between items-center px-4 md:px-margin h-20 w-full relative">
+      <!-- Logo -->
+      <a class="flex items-center shrink-0" href="index.html">
+        <img src="pictures/Poprush-logo.png" alt="POPRUSH" class="h-12 md:h-14 object-contain" />
+        <span
+          class="font-display-lg text-2xl md:text-3xl font-black tracking-tighter text-secondary ml-2">POPRUSH</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex gap-8 absolute left-1/2 -translate-x-1/2 items-center font-label-md text-label-md">
+        <a class="text-secondary font-bold border-b-2 border-secondary pb-1 transition-all" href="index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="screens/flavors.html">Products</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="screens/about.html">About</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="screens/contact.html">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-1 lg:gap-2">
+        <!-- Mobile Cart Button -->
+        <button onclick="window.location.href = 'screens/cart.html'"
+          class="lg:hidden p-2 text-secondary hover:bg-secondary/10 rounded-full transition-all relative"
+          aria-label="Cart">
+          <span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+          <span id="cartCountBadge"
+            class="absolute top-1 right-1 bg-secondary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+        </button>
+
+        <button onclick="window.location.href = 'screens/cart.html'"
+          class="hidden lg:block bg-secondary text-white font-label-md text-label-md px-6 py-3 rounded-full hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-secondary/20">
+          Order Now
+        </button>
+
+        <button id="menuToggle"
+          class="lg:hidden p-2 text-on-surface hover:bg-surface-container rounded-full transition-all"
+          aria-label="Menu">
+          <span class="material-symbols-outlined text-[30px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu"
+      class="hidden lg:hidden absolute top-20 left-0 w-full bg-surface border-b border-outline-variant z-40 p-6 flex flex-col gap-5 shadow-2xl transition-all duration-300 transform origin-top">
+      <a class="font-headline-md text-headline-md text-secondary" href="index.html">Home</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="screens/flavors.html">Products</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="screens/about.html">About</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="screens/contact.html">Contact</a>
+      <hr class="border-outline-variant my-2">
+      <button onclick="window.location.href = 'screens/cart.html'"
+        class="bg-secondary text-white w-full py-4 rounded-xl font-headline-md text-headline-md shadow-lg shadow-secondary/20">Order
+        Now</button>
+    </div>
+  </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="relative w-full min-h-[819px] flex items-center justify-center overflow-hidden bg-surface-variant">
+      <img alt="Cinematic popcorn explosion"
+        class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply"
+        data-alt="A dynamic, high-speed photography shot of popcorn kernels mid-explosion in a cinematic, high-contrast studio setting. The background is a very bright, almost white light mode environment. Vibrantly colored kernels in golden yellows and energetic reds are suspended in mid-air against a soft, blurred background. The lighting is dramatic and punchy, emphasizing the crispy texture and intense colors of the snacks. The mood is highly energetic, youthful, and appetizing, perfectly suited for a premium Gen-Z snack brand."
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZYQiLgXGq486-U19sJFBbyO0alH-zWx8sasZreiWqdJeItNLDNTLLjPXZsqU9uPq2mTZ4bpgpIzqr4xIhsCN0IR_ZwEjuUbrkGILeIEkfmFmPNDF-juG-04siOSJrLS8ZPBhAC8XWW1zJ8equCQR5arUvyBZ2yhz5cDU-reeNVfhCgwr3nhkXMTaed8X-4RpUwMr6Hi3atKYt2muvmqaLpKevs6jFbYRdxoWbFBkPryiueoLg8TJhUvVSzKfiQ53X-JOKEthCDcF-" />
+      <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent"></div>
+      <div
+        class="relative z-10 text-center px-margin max-w-4xl mx-auto flex flex-col items-center gap-stack-sm mb-24 md:mb-32">
+        <!-- <img src="pictures/Poprush-logo.png" alt="POPRUSH Logo"
+                                        class="h-40 object-contain mb-6 drop-shadow-2xl hover:scale-110 transition-transform duration-300"> -->
+        <h1
+          class="font-display-lg text-display-lg md:text-[96px] text-secondary drop-shadow-xl tracking-tighter leading-none mb-4 uppercase">
+          POPRUSH
+        </h1>
+        <p
+          class="font-headline-md text-headline-md md:text-headline-lg text-black bg-primary-fixed/90 px-8 py-4 rounded-full backdrop-blur-sm border-2 border-on-primary-fixed shadow-[6px_6px_0px_rgba(0,0,0,0.15)] transform -rotate-2 mb-8 inline-block">
+          Every Pop Hits Different.
+        </p>
+        <button onclick="window.location.href = 'screens/cart.html'"
+          class="bg-secondary text-white font-headline-md text-headline-md px-10 py-5 rounded-full hover:scale-105 active:scale-95 transition-all duration-200 shadow-xl shadow-secondary/30 border-2 border-secondary flex items-center gap-2">
+          Order Now
+          <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+        </button>
+      </div>
+    </section>
+    <!-- Featured Products (Bento Grid) -->
+    <section class="py-unit px-margin max-w-container-max-width mx-auto" id="products">
+      <div class="text-center mb-stack-md">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">
+          Featured Flavors
+        </h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">
+          Grab 'em before they're gone.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px]">
+        <!-- Caramel Blast (Large Feature) -->
+        <article
+          class="col-span-1 md:col-span-8 row-span-2 relative rounded-xl overflow-hidden group bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow duration-300">
+          <img alt="Caramel Popcorn"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            data-alt="A close-up, high-saturation photograph of golden, glossy caramel-coated popcorn pieces overflowing from a stylish, minimalist modern container. The background is a clean, bright, off-white studio setting with soft, diffused lighting that creates a premium, lifted e-commerce feel. The warm golden and amber tones of the caramel contrast beautifully with the bright background. The mood is indulgent, irresistible, and high-energy."
+            src="pictures/Caramel Blast.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-margin py-stack-lg w-full flex justify-between items-end">
+            <div>
+              <span
+                class="inline-block bg-primary-container text-black font-label-md text-label-md px-3 py-1 rounded-full mb-2 uppercase">Sweet</span>
+              <h3 class="font-headline-lg text-headline-lg text-surface mb-1">
+                Caramel Blast
+              </h3>
+              <p class="font-body-md text-body-md text-surface-variant mb-2 max-w-md">
+                Rich, buttery caramel coats every single kernel. It's the
+                classic, turned up to eleven.
+              </p>
+              <span class="font-headline-md text-headline-md text-primary-fixed block">₱69</span>
+            </div>
+            <button onclick="
+                  addToCartAndRedirect(
+                    'Caramel Blast',
+                    'Caramel Blast.jpg',
+                    'Small',
+                  )
+                "
+              class="bg-secondary text-white w-12 h-12 aspect-square rounded-full shadow-lg shadow-secondary/30 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+            </button>
+          </div>
+        </article>
+        <!-- White Cheddar Pop -->
+        <article
+          class="col-span-1 md:col-span-4 row-span-1 relative rounded-xl overflow-hidden group bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+          <img alt="Cheese Popcorn"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            data-alt="A vibrant, stylized product shot of bright yellow, cheese-dusted popcorn cascading down against a clean, stark white background. The lighting is high-contrast and punchy, typical of modern high-end D2C snack branding. The image feels energetic and playful, with sharp focus on the powdery, savory texture of the snack. A small pop of red in the composition adds excitement."
+            src="pictures/White Cheddar.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full flex justify-between items-end">
+            <div>
+              <span
+                class="inline-block bg-secondary-container text-white font-label-md text-label-md px-2 py-1 rounded-full mb-1 uppercase text-[10px]">Savory</span>
+              <h3 class="font-headline-md text-headline-md text-surface leading-tight mb-1">
+                White Cheddar Pop
+              </h3>
+              <p class="font-body-md text-body-md text-surface-variant mb-1 text-sm">
+                Smooth, creamy white cheddar dusted over perfectly popped,
+                fluffy kernels.
+              </p>
+              <span class="font-body-md text-body-md text-primary-fixed font-bold">₱69</span>
+            </div>
+            <button onclick="
+                  addToCartAndRedirect(
+                    'White Cheddar Pop',
+                    'White Cheddar.jpg',
+                    'Small',
+                  )
+                "
+              class="bg-secondary text-white w-12 h-12 aspect-square rounded-full hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-md shrink-0">
+              <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+            </button>
+          </div>
+        </article>
+        <!-- Matcha Melt -->
+        <article
+          class="col-span-1 md:col-span-4 row-span-1 relative rounded-xl overflow-hidden group bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+          <img alt="Matcha Popcorn"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            data-alt="A trendy, modern product photograph of popcorn lightly dusted with vibrant green matcha powder. The setting is bright, minimalist, and airy, utilizing a light grey or off-white background to make the earthy green colors pop. Soft, diffused ambient lighting creates a lifted, premium e-commerce aesthetic. The overall mood is sophisticated, fresh, and highly appetizing."
+            src="pictures/Matcha Melt.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full flex justify-between items-end">
+            <div>
+              <span
+                class="inline-block bg-surface text-on-surface font-label-md text-label-md px-2 py-1 rounded-full mb-1 uppercase text-[10px]">Unique</span>
+              <h3 class="font-headline-md text-headline-md text-surface leading-tight mb-1">
+                Matcha Melt
+              </h3>
+              <p class="font-body-md text-body-md text-surface-variant mb-1 text-sm">
+                Earthy Japanese matcha meets the irresistible crunch of
+                popcorn. A must-try for tea lovers.
+              </p>
+              <span class="font-body-md text-body-md text-primary-fixed font-bold">₱69</span>
+            </div>
+            <button onclick="
+                  addToCartAndRedirect(
+                    'Matcha Melt',
+                    'Matcha Melt.jpg',
+                    'Small',
+                  )
+                "
+              class="bg-secondary text-white w-12 h-12 aspect-square rounded-full hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-md shrink-0">
+              <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+            </button>
+          </div>
+        </article>
+        <!-- Spicy BBQ Crunch -->
+        <article
+          class="col-span-1 md:col-span-6 row-span-1 relative rounded-xl overflow-hidden group bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+          <img alt="Spicy Popcorn"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            data-alt="A bold, high-contrast image of intensely red, spicy-coated popcorn scattered dynamically across a pristine white surface. The lighting is dramatic and crisp, casting soft, diffused shadows that give the snack a lifted, touchable appearance. The intense reds and deep oranges dominate the frame, conveying a hot, fiery, and exciting flavor profile suited for a loud, Gen-Z brand."
+            src="pictures/Spicy BBQ.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full flex justify-between items-end">
+            <div>
+              <span
+                class="inline-block bg-secondary text-white font-label-md text-label-md px-3 py-1 rounded-full mb-1 uppercase">Spicy</span>
+              <h3
+                class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-surface mb-1">
+                Spicy BBQ Crunch
+              </h3>
+              <p class="font-body-md text-body-md text-surface-variant mb-1 text-sm">
+                Smoky BBQ heat that builds with every bite. Not for the
+                faint-hearted.
+              </p>
+              <span class="font-body-lg text-body-lg text-primary-fixed font-bold">₱69</span>
+            </div>
+            <button onclick="
+                  addToCartAndRedirect(
+                    'Spicy BBQ Crunch',
+                    'Spicy BBQ.jpg',
+                    'Small',
+                  )
+                "
+              class="bg-secondary text-white w-12 h-12 aspect-square rounded-full shadow-lg shadow-secondary/30 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+            </button>
+          </div>
+        </article>
+        <!-- Choco Drizzle -->
+        <article
+          class="col-span-1 md:col-span-6 row-span-1 relative rounded-xl overflow-hidden group bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+          <img alt="Chocolate Popcorn"
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            data-alt="A luxurious, rich product shot of plump popcorn kernels generously drizzled with dark, glossy chocolate. The setting is high-key and bright, utilizing a minimalist white background to emphasize the dark, decadent chocolate and golden popcorn. The soft, ambient shadows create a sense of depth and premium quality. The mood is highly indulgent and craving-inducing, resembling a high-end dessert brand."
+            src="pictures/Choco Drizzle.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/70 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full flex justify-between items-end">
+            <div>
+              <span
+                class="inline-block bg-inverse-surface text-surface font-label-md text-label-md px-3 py-1 rounded-full mb-1 uppercase">Decadent</span>
+              <h3
+                class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-surface mb-1">
+                Choco Drizzle
+              </h3>
+              <p class="font-body-md text-body-md text-surface-variant mb-1 text-sm">
+                Luscious dark chocolate generously drizzled over golden,
+                crunchy popcorn.
+              </p>
+              <span class="font-body-lg text-body-lg text-primary-fixed font-bold">₱69</span>
+            </div>
+            <button onclick="
+                  addToCartAndRedirect(
+                    'Choco Drizzle',
+                    'Choco Drizzle.jpg',
+                    'Small',
+                  )
+                "
+              class="bg-secondary text-white w-12 h-12 aspect-square rounded-full shadow-lg shadow-secondary/30 hover:scale-110 active:scale-95 transition-all flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: &quot;FILL&quot; 1">local_mall</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Review Section -->
+    <section class="bg-surface-container py-stack-lg px-margin overflow-hidden relative" id="reviews">
+      <div class="max-w-container-width mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface mb-2 uppercase">What Customers Say</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Real reviews from our popcorn lovers.</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-10 items-start justify-center max-w-7xl mx-auto">
+          <!-- Left Side: Submit Review Form (Top on Mobile) -->
+          <div
+            class="w-full lg:w-[400px] bg-secondary text-white p-8 rounded-2xl border-2 border-secondary shadow-xl shadow-secondary/20 shrink-0 sticky top-24">
+            <h3 class="font-headline-md text-headline-md mb-2">Leave a Review</h3>
+            <p class="text-sm opacity-90 mb-6">Tell us what you think of your favorite pops!</p>
+            <form class="space-y-4" onsubmit="handleReviewSubmit(event)">
+              <div>
+                <label class="block text-[11px] font-bold uppercase mb-1 opacity-80">Your Name</label>
+                <input type="text" id="revName" required
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/40 focus:bg-white/20 focus:outline-none transition-all border-none ring-1 ring-white/30">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase mb-1 opacity-80">Rating</label>
+                <div class="flex gap-1 py-2" id="starRating">
+                  <button type="button" onclick="setStarRating(1)"
+                    class="star-btn material-symbols-outlined text-white/40 hover:text-white transition-colors text-[32px]">star</button>
+                  <button type="button" onclick="setStarRating(2)"
+                    class="star-btn material-symbols-outlined text-white/40 hover:text-white transition-colors text-[32px]">star</button>
+                  <button type="button" onclick="setStarRating(3)"
+                    class="star-btn material-symbols-outlined text-white/40 hover:text-white transition-colors text-[32px]">star</button>
+                  <button type="button" onclick="setStarRating(4)"
+                    class="star-btn material-symbols-outlined text-white/40 hover:text-white transition-colors text-[32px]">star</button>
+                  <button type="button" onclick="setStarRating(5)"
+                    class="star-btn material-symbols-outlined text-white/40 hover:text-white transition-colors text-[32px]">star</button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase mb-1 opacity-80">Message</label>
+                <textarea id="revText" required rows="3"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/40 focus:bg-white/20 focus:outline-none transition-all border-none ring-1 ring-white/30 resize-none"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full bg-white text-secondary font-bold py-4 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-lg">Submit
+                Review</button>
+            </form>
+          </div>
+
+          <!-- Right Side: Scrollable Review Cards -->
+          <div class="w-full flex-grow overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:max-h-[600px] overflow-y-auto p-1 scrollbar-hide">
+              <!-- Review 1 -->
+              <div
+                class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow h-fit">
+                <div class="flex items-center gap-1 mb-3">
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface italic mb-4">"Super lami and crunchy! Best popcorn
+                  ever! I love the Caramel Blast, it's so rich and buttery."</p>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-bold text-lg">
+                    S</div>
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">Shandy</p>
+                    <p class="text-[10px] text-on-surface-variant uppercase">Verified Snacker</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Review 2 -->
+              <div
+                class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow h-fit">
+                <div class="flex items-center gap-1 mb-3">
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-outline text-[20px]">star</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface italic mb-4">"Okay lang. Gusto ko mas spicy pa siya.
+                  The BBQ is good but I want more heat!"</p>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary font-bold text-lg">
+                    H</div>
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">Harah</p>
+                    <p class="text-[10px] text-on-surface-variant uppercase">Spicy Lover</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Review 3 (Duplicate for scrolling demo) -->
+              <div
+                class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow h-fit">
+                <div class="flex items-center gap-1 mb-3">
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                  <span class="material-symbols-outlined text-secondary text-[20px]"
+                    style="font-variation-settings: 'FILL' 1">star</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface italic mb-4">"The cheese popcorn is a game changer! It's so addictive."</p>
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary font-bold text-lg">
+                    M</div>
+                  <div>
+                    <p class="font-label-md text-label-md text-on-surface">Mark</p>
+                    <p class="text-[10px] text-on-surface-variant uppercase">Cheese Fanatic</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-primary-fixed py-stack-lg px-margin overflow-hidden relative" id="about">
+      <div class="absolute inset-0 opacity-10 flex flex-wrap gap-10 justify-center items-center pointer-events-none">
+        <span class="material-symbols-outlined text-[120px] text-white-fixed rotate-12">local_fire_department</span>
+        <span class="material-symbols-outlined text-[160px] text-white-fixed -rotate-12">star</span>
+        <span class="material-symbols-outlined text-[100px] text-white-fixed rotate-45">bolt</span>
+        <span class="material-symbols-outlined text-[140px] text-white-fixed -rotate-6">favorite</span>
+      </div>
+      <div
+        class="max-w-4xl mx-auto text-center relative z-10 bg-surface/40 backdrop-blur-md p-stack-md rounded-xl border-2 border-on-primary-fixed shadow-lg shadow-on-primary-fixed/5">
+        <h2 class="font-display-lg text-4xl md:text-display-lg text-black mb-6 uppercase">
+          About Us
+        </h2>
+        <div class="space-y-8">
+          <p class="font-body-lg text-headline-sm text-black font-bold max-w-3xl mx-auto leading-relaxed">
+            PopRush is flavored popcorn brand made for students, movie lovers,
+            and snack enthusiasts.
+          </p>
+          <div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+          <div>
+            <h3 class="font-headline-md text-headline-md text-secondary mb-2">
+              Our Mission
+            </h3>
+            <p class="font-body-lg text-body-lg text-black font-medium max-w-2xl mx-auto">
+              To deliver highly craved, boldly flavored, and ridiculously
+              affordable snacks that turn every boring moment into a main
+              event.
+            </p>
+          </div>
+          <div class="w-24 h-[2px] bg-black/20 mx-auto"></div>
+          <div>
+            <h3 class="font-headline-md text-headline-md text-secondary mb-2">
+              Our Vision
+            </h3>
+            <p class="font-body-md text-body-md text-black max-w-2xl mx-auto">
+              We see a world where no one settles for bland. We're here to
+              redefine the snack aisle with relentless energy, premium
+              ingredients, and flavors that absolutely pop off.
+            </p>
+          </div>
+          <button onclick="window.location.href = 'screens/about.html'"
+            class="mt-12 bg-secondary text-white px-10 py-4 rounded-full font-headline-md text-headline-md hover:scale-105 transition-transform active:scale-95 shadow-xl shadow-secondary/30">
+            Full Story
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="bg-primary-fixed">
+    <!-- Footer -->
+    <footer
+      class="bg-inverse-surface dark:bg-surface-container-lowest w-full rounded-t-[32px] border-t-4 border-primary-fixed">
+      <div
+        class="flex flex-col md:flex-row justify-between items-start px-margin py-stack-md max-w-container-max-width mx-auto gap-gutter">
+        <div class="flex flex-col gap-4">
+          <a class="flex items-center" href="index.html"><img src="pictures/Poprush-logo.png" alt="POPRUSH"
+              class="h-10 object-contain" /><span
+              class="font-display-lg text-xl font-black tracking-tighter text-primary-fixed dark:text-primary ml-2">POPRUSH</span></a>
+          <p class="font-body-md text-body-md text-tertiary-fixed-dim">
+            © POPRUSH Popcorn Co. Every Pop Hits Different.
+          </p>
+        </div>
+        <nav class="flex flex-col md:flex-row gap-6 md:gap-gutter">
+          <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+            href="#">Privacy Policy</a>
+          <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+            href="#">Terms of Service</a>
+          <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+            href="#">Shipping Info</a>
+          <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+            href="screens/contact.html">Wholesale</a>
+        </nav>
+
+        <div class="flex gap-4 items-center">
+          <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+            href="https://www.facebook.com/profile.php?id=61589893824048" target="_blank" aria-label="Facebook">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+              <path
+                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z" />
+            </svg>
+          </a>
+          <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+            href="https://www.instagram.com/poprush.ph?igsh=ZjNlZjljM2J3cW56" target="_blank" aria-label="Instagram">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+          <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+            href="https://vt.tiktok.com/ZSxeWQAFx/" target="_blank" aria-label="TikTok">
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1 .05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function addToCartAndRedirect(name, image, size) {
+      let cart = JSON.parse(localStorage.getItem("poprushCart") || "[]");
+      const ex = cart.find((i) => i.name === name && i.size === size);
+      if (ex) {
+        ex.qty += 1;
+      } else {
+        cart.push({ name, image, size: size, qty: 1 });
+      }
+      localStorage.setItem("poprushCart", JSON.stringify(cart));
+      window.location.href = "screens/cart.html";
+    }
+  </script>
+  <script>
+    // Review & Toast Logic
+    let selectedRevStars = 0;
+    function setStarRating(rating) {
+      selectedRevStars = rating;
+      const stars = document.querySelectorAll('#starRating .star-btn');
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('text-white');
+          star.classList.remove('text-white/40');
+          star.style.fontVariationSettings = "'FILL' 1";
+        } else {
+          star.classList.remove('text-white');
+          star.classList.add('text-white/40');
+          star.style.fontVariationSettings = "'FILL' 0";
+        }
+      });
+    }
+
+    function showToast(message, type = 'info') {
+      let container = document.getElementById('toast-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'fixed bottom-6 right-6 z-[9999] flex flex-col gap-3 pointer-events-none';
+        document.body.appendChild(container);
+      }
+
+      const toast = document.createElement('div');
+      toast.className = `bg-surface-container-highest text-on-surface p-4 rounded-xl shadow-2xl flex items-center gap-3 font-medium pointer-events-auto animate-toast-in border-l-4 ${type === 'success' ? 'border-secondary' : type === 'error' ? 'border-error' : 'border-primary'
+        }`;
+
+      const icon = type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info';
+      toast.innerHTML = `<span class="material-symbols-outlined">${icon}</span><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(20px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    function handleReviewSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('revName').value.trim();
+      const text = document.getElementById('revText').value.trim();
+
+      if (!name || !text || selectedRevStars === 0) {
+        showToast('Please provide a name, rating, and message!', 'error');
+        return;
+      }
+
+      showToast(`Thank you, ${name}! Your review has been submitted for approval.`, 'success');
+
+      // Reset form
+      e.target.reset();
+      setStarRating(0);
+    }
+  </script>
+  <style>
+    @keyframes toast-in {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-toast-in {
+      animation: toast-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+  </style>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

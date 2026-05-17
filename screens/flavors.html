@@ -1,0 +1,281 @@
+<!doctype html>
+
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>POPRUSH - Products</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Plus+Jakarta+Sans:wght@400&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="../pictures/Poprush-logo.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+  <!-- TopNavBar -->
+  <header class="bg-surface/90 backdrop-blur-md sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm">
+    <div class="flex justify-between items-center px-4 md:px-margin h-20 w-full relative">
+      <!-- Logo -->
+      <a class="flex items-center shrink-0" href="../index.html">
+        <img src="../pictures/Poprush-logo.png" alt="POPRUSH" class="h-12 md:h-14 object-contain" />
+        <span
+          class="font-display-lg text-2xl md:text-3xl font-black tracking-tighter text-secondary ml-2">POPRUSH</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex gap-8 absolute left-1/2 -translate-x-1/2 items-center font-label-md text-label-md">
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="../index.html">Home</a>
+        <a class="text-secondary font-bold border-b-2 border-secondary pb-1 transition-all"
+          href="flavors.html">Products</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-1 lg:gap-2">
+        <!-- Mobile Cart Button -->
+        <button onclick="window.location.href = 'cart.html'"
+          class="lg:hidden p-2 text-secondary hover:bg-secondary/10 rounded-full transition-all relative"
+          aria-label="Cart">
+          <span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+          <span id="cartCountBadge"
+            class="absolute top-1 right-1 bg-secondary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+        </button>
+
+        <button onclick="window.location.href = 'cart.html'"
+          class="hidden lg:block bg-secondary text-white font-label-md text-label-md px-6 py-3 rounded-full hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-secondary/20">
+          Order Now
+        </button>
+
+        <button id="menuToggle"
+          class="lg:hidden p-2 text-on-surface hover:bg-surface-container rounded-full transition-all"
+          aria-label="Menu">
+          <span class="material-symbols-outlined text-[30px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu"
+      class="hidden lg:hidden absolute top-20 left-0 w-full bg-surface border-b border-outline-variant z-40 p-6 flex flex-col gap-5 shadow-2xl transition-all duration-300 transform origin-top">
+      <a class="font-headline-md text-headline-md text-on-surface" href="../index.html">Home</a>
+      <a class="font-headline-md text-headline-md text-secondary" href="flavors.html">Products</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="about.html">About</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="contact.html">Contact</a>
+      <hr class="border-outline-variant my-2">
+      <button onclick="window.location.href = 'cart.html'"
+        class="bg-secondary text-white w-full py-4 rounded-xl font-headline-md text-headline-md shadow-lg shadow-secondary/20">Order
+        Now</button>
+    </div>
+  </header>
+
+  <main class="flex-grow flex flex-col py-stack-md w-full gap-stack-md">
+    <!-- Heading & Controls -->
+    <div class="px-margin max-w-[1280px] mx-auto w-full flex justify-between items-end">
+      <div>
+        <h1 class="font-headline-lg text-headline-lg hidden md:block">
+          Our Flavors
+        </h1>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:hidden">
+          Our Flavors
+        </h1>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          Swipe through each pop-worthy flavor.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card Carousel Track -->
+    <div class="w-full relative overflow-hidden pb-12 pt-8">
+      <button class="carousel-btn absolute left-2 md:left-8 top-[45%] -translate-y-1/2 z-20 flex" id="btnPrev"
+        aria-label="Previous">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+      <button class="carousel-btn absolute right-2 md:right-8 top-[45%] -translate-y-1/2 z-20 flex" id="btnNext"
+        aria-label="Next">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+      <!-- We use 50vw minus half of the card width (approx 160px) to pad the sides so the first/last card can center -->
+      <div
+        class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-[calc(50vw-150px)] sm:px-[calc(50vw-175px)]"
+        id="carouselTrack" style="scroll-behavior: smooth">
+        <!-- Products populated dynamically by JS -->
+      </div>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer
+    class="bg-inverse-surface dark:bg-surface-container-lowest w-full rounded-t-lg border-t-4 border-primary-fixed">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start px-margin py-stack-md max-w-container-max-width mx-auto gap-gutter">
+      <div class="flex flex-col gap-4">
+        <a class="flex items-center" href="../index.html"><img src="../pictures/Poprush-logo.png" alt="POPRUSH"
+            class="h-10 object-contain" /><span
+            class="font-display-lg text-xl font-black tracking-tighter text-primary-fixed dark:text-primary ml-2">POPRUSH</span></a>
+        <p class="font-body-md text-body-md text-tertiary-fixed-dim">
+          © POPRUSH Popcorn Co. Every Pop Hits Different.
+        </p>
+      </div>
+      <nav class="flex flex-col md:flex-row gap-6 md:gap-gutter">
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+          href="#">Privacy Policy</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+          href="#">Terms of Service</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+          href="#">Shipping Info</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:opacity-80 active:scale-98"
+          href="contact.html">Wholesale</a>
+      </nav>
+
+      <div class="flex gap-4 items-center">
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://www.facebook.com/profile.php?id=61589893824048" target="_blank" aria-label="Facebook">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z" />
+          </svg>
+        </a>
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://www.instagram.com/poprush.ph?igsh=ZjNlZjljM2J3cW56" target="_blank" aria-label="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </a>
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://vt.tiktok.com/ZSxeWQAFx/" target="_blank" aria-label="TikTok">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1 .05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <div id="cartToast"
+    class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface font-label-md px-6 py-3 rounded-full shadow-xl opacity-0 translate-y-4 transition-all duration-300 flex items-center gap-2">
+    <span class="material-symbols-outlined text-primary-fixed text-[18px]"
+      style="font-variation-settings: &quot;FILL&quot; 1">check_circle</span><span id="toastMsg"></span>
+  </div>
+
+  <script>
+    // Initialize Inventory if empty (consistent with Admin panel)
+    function checkInventory() {
+      if (!localStorage.getItem('poprushInventory')) {
+        const inventory = [
+          { id: 1, name: 'Caramel Blast', image: 'Caramel Blast.jpg', stock: { Small: 50, Regular: 60, Large: 40 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Rich and buttery caramel-coated popcorn', category: 'Sweet' },
+          { id: 2, name: 'Spicy BBQ', image: 'Spicy BBQ.jpg', stock: { Small: 40, Regular: 50, Large: 30 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Bold and smoky BBQ with a spicy kick', category: 'Spicy' },
+          { id: 3, name: 'White Cheddar', image: 'White Cheddar.jpg', stock: { Small: 70, Regular: 80, Large: 50 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Creamy, tangy white cheddar cheese', category: 'Savory' },
+          { id: 4, name: 'Choco Drizzle', image: 'Choco Drizzle.jpg', stock: { Small: 30, Regular: 30, Large: 20 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Decadent chocolate drizzled popcorn', category: 'Sweet' },
+          { id: 5, name: 'Matcha Melt', image: 'Matcha Melt.jpg', stock: { Small: 20, Regular: 25, Large: 15 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Premium Japanese matcha flavor', category: 'Unique' }
+        ];
+        localStorage.setItem('poprushInventory', JSON.stringify(inventory));
+      }
+    }
+
+    function renderProducts() {
+      const inventory = JSON.parse(localStorage.getItem('poprushInventory') || '[]');
+      const track = document.getElementById('carouselTrack');
+      if (!track) return;
+
+      track.innerHTML = '';
+
+      // Only show active products
+      const activeProducts = inventory.filter(p => p.status === 'active');
+
+      if (activeProducts.length === 0) {
+        track.innerHTML = '<div class="text-center w-full py-12"><p class="text-on-surface-variant">No products available at the moment.</p></div>';
+        return;
+      }
+
+      activeProducts.forEach((item, index) => {
+        let totalStock = 0;
+        if (typeof item.stock === 'object') {
+          totalStock = (item.stock.Small || 0) + (item.stock.Regular || 0) + (item.stock.Large || 0);
+        } else {
+          totalStock = item.stock; // fallback for older data
+        }
+        const isOutOfStock = totalStock <= 0;
+        const category = item.category || 'Popcorn';
+        
+        // Category color mapping
+        const catColors = {
+          'Sweet': 'bg-primary-fixed text-on-primary-fixed',
+          'Spicy': 'bg-secondary text-white',
+          'Savory': 'bg-tertiary-container text-on-tertiary-container',
+          'Unique': 'bg-surface-container-high text-on-surface'
+        };
+        const catColor = catColors[category] || 'bg-outline-variant text-on-surface-variant';
+
+        const card = document.createElement('article');
+        card.className = `carousel-card ${index === 0 ? 'is-active' : ''} bg-surface-container-lowest rounded-xl flex flex-col overflow-hidden shadow-[0_10px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_15px_30px_rgba(0,0,0,0.1)] relative group w-[300px] sm:w-[350px] snap-center shrink-0`;
+        
+        card.innerHTML = `
+          <div class="relative h-64 w-full overflow-hidden ${isOutOfStock ? 'grayscale' : ''}">
+            <img alt="${item.name}"
+              class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              src="../pictures/${item.image}" 
+              onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(item.name)}'"/>
+            ${isOutOfStock ? '<div class="absolute inset-0 bg-black/40 flex items-center justify-center z-20"><span class="bg-white text-black font-bold px-4 py-2 rounded-lg">OUT OF STOCK</span></div>' : ''}
+          </div>
+          <div class="p-6 flex flex-col flex-grow gap-2 z-10 bg-surface-container-lowest relative">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span class="inline-block ${catColor} font-label-md text-[10px] px-2 py-1 rounded-full uppercase">${category}</span>
+              <span class="avail-badge inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${isOutOfStock ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-green-100 text-green-700 border border-green-200'}">
+                &#9679; ${isOutOfStock ? 'Sold Out' : 'Available'}
+              </span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-on-background">${item.name}</h3>
+            <div class="flex gap-2 mt-1 flex-wrap">
+              <span class="font-label-md text-[11px] text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">S – ₱${item.prices.Small}</span>
+              <span class="font-label-md text-[11px] text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">R – ₱${item.prices.Regular}</span>
+              <span class="font-label-md text-[11px] text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">L – ₱${item.prices.Large}</span>
+            </div>
+            <div class="mt-auto pt-3 flex justify-between items-center">
+              <span class="font-headline-md text-headline-md text-secondary">from ₱${item.prices.Small}</span>
+              <button onclick="addToCart('${item.name.replace(/'/g, "\\'")}', '${item.image}')"
+                ${isOutOfStock ? 'disabled' : ''}
+                class="bg-secondary text-white hover:scale-105 active:scale-95 shadow-lg px-5 py-2 rounded-full font-label-md text-sm transition-all flex items-center gap-2 disabled:opacity-50 disabled:scale-100 disabled:cursor-not-allowed">
+                Add to Cart
+                <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+              </button>
+            </div>
+          </div>
+        `;
+        track.appendChild(card);
+      });
+    }
+
+    function addToCart(name, image) {
+      let cart = JSON.parse(localStorage.getItem("poprushCart") || "[]");
+      const ex = cart.find((i) => i.name === name);
+      if (ex) {
+        ex.qty += 1;
+      } else {
+        cart.push({ name, image, size: "Regular", qty: 1 });
+      }
+      localStorage.setItem("poprushCart", JSON.stringify(cart));
+      window.location.href = "cart.html";
+    }
+
+    // Run rendering
+    checkInventory();
+    renderProducts();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

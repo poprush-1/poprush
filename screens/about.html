@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - POPRUSH</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="../pictures/Poprush-logo.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <script src="../js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-background text-on-background antialiased font-body-md text-body-md min-h-screen flex flex-col">
+  <!-- TopNavBar -->
+  <header class="bg-surface/90 backdrop-blur-md sticky top-0 w-full z-50 border-b border-outline-variant shadow-sm">
+    <div class="flex justify-between items-center px-4 md:px-margin h-20 w-full relative">
+      <!-- Logo -->
+      <a class="flex items-center shrink-0" href="../index.html">
+        <img src="../pictures/Poprush-logo.png" alt="POPRUSH" class="h-12 md:h-14 object-contain" />
+        <span
+          class="font-display-lg text-2xl md:text-3xl font-black tracking-tighter text-secondary ml-2">POPRUSH</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex gap-8 absolute left-1/2 -translate-x-1/2 items-center font-label-md text-label-md">
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="../index.html">Home</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="flavors.html">Products</a>
+        <a class="text-secondary font-bold border-b-2 border-secondary pb-1 transition-all" href="about.html">About</a>
+        <a class="text-on-surface-variant hover:text-secondary transition-all" href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-1 lg:gap-2">
+        <!-- Mobile Cart Button -->
+        <button onclick="window.location.href = 'cart.html'"
+          class="lg:hidden p-2 text-secondary hover:bg-secondary/10 rounded-full transition-all relative"
+          aria-label="Cart">
+          <span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+          <span id="cartCountBadge"
+            class="absolute top-1 right-1 bg-secondary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+        </button>
+
+        <button onclick="window.location.href = 'cart.html'"
+          class="hidden lg:block bg-secondary text-white font-label-md text-label-md px-6 py-3 rounded-full hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-secondary/20">
+          Order Now
+        </button>
+
+        <button id="menuToggle"
+          class="lg:hidden p-2 text-on-surface hover:bg-surface-container rounded-full transition-all"
+          aria-label="Menu">
+          <span class="material-symbols-outlined text-[30px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu"
+      class="hidden lg:hidden absolute top-20 left-0 w-full bg-surface border-b border-outline-variant z-40 p-6 flex flex-col gap-5 shadow-2xl transition-all duration-300 transform origin-top">
+      <a class="font-headline-md text-headline-md text-on-surface" href="../index.html">Home</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="flavors.html">Products</a>
+      <a class="font-headline-md text-headline-md text-secondary" href="about.html">About</a>
+      <a class="font-headline-md text-headline-md text-on-surface" href="contact.html">Contact</a>
+      <hr class="border-outline-variant my-2">
+      <button onclick="window.location.href = 'cart.html'"
+        class="bg-secondary text-white w-full py-4 rounded-xl font-headline-md text-headline-md shadow-lg shadow-secondary/20">Order
+        Now</button>
+    </div>
+  </header>
+
+  <main
+    class="flex-grow flex flex-col items-center px-margin py-unit max-w-container-width mx-auto w-full gap-stack-lg relative">
+    <!-- Hero Section -->
+    <div class="text-center w-full max-w-3xl mx-auto py-stack-md">
+      <h1 class="font-display-lg text-4xl md:text-display-lg text-secondary mb-stack-sm uppercase">Our Story</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+        PopRush is a flavored popcorn brand born from a simple obsession: why should snacks be boring? We started with a
+        mission to bring high-energy flavors to students, movie lovers, and anyone who craves a snack that actually hits
+        different.
+      </p>
+    </div>
+
+    <!-- Mission & Vision Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full">
+      <div
+        class="bg-primary-fixed p-stack-md rounded-2xl border-2 border-on-primary-fixed shadow-lg shadow-primary-fixed/20 transform md:-rotate-1">
+        <h2 class="font-headline-lg text-headline-lg text-black mb-4 uppercase tracking-tighter">Our Mission</h2>
+        <p class="font-body-lg text-body-lg text-black leading-relaxed">
+          To deliver highly craved, boldly flavored, and ridiculously affordable snacks that turn every boring moment
+          into a main event. We believe every crunch should be an experience.
+        </p>
+      </div>
+      <div
+        class="bg-surface-container-lowest p-stack-md rounded-2xl border-2 border-outline-variant shadow-lg transform md:rotate-1">
+        <h2 class="font-headline-lg text-headline-lg text-secondary mb-4 uppercase tracking-tighter">Our Vision</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          We see a world where no one settles for bland. We're here to redefine the snack aisle with relentless energy,
+          premium ingredients, and flavors that absolutely pop off.
+        </p>
+      </div>
+    </div>
+
+    <!-- Production & Services -->
+    <div
+      class="w-full bg-surface-container rounded-2xl p-stack-md border border-outline-variant flex flex-col md:flex-row items-center gap-gutter">
+      <div class="w-full md:w-1/2 overflow-hidden rounded-xl h-64 md:h-80 relative">
+        <img src="../pictures/Caramel Blast.jpg" alt="Production"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+          <span class="text-white font-headline-md text-headline-md">Crafted with Care</span>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 flex flex-col gap-unit">
+        <h2 class="font-headline-lg text-3xl md:text-headline-lg text-on-surface uppercase">Our Production</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">
+          Every bag of PopRush is small-batch popped and hand-seasoned to ensure maximum flavor coverage. We use premium
+          non-GMO kernels and high-quality ingredients to deliver that signature "PopRush" crunch.
+        </p>
+        <ul class="flex flex-col gap-2 mt-2">
+          <li class="flex items-center gap-2 text-on-surface font-bold">
+            <span class="material-symbols-outlined text-secondary">check_circle</span>
+            Non-GMO Kernels
+          </li>
+          <li class="flex items-center gap-2 text-on-surface font-bold">
+            <span class="material-symbols-outlined text-secondary">check_circle</span>
+            Small-Batch Popped
+          </li>
+          <li class="flex items-center gap-2 text-on-surface font-bold">
+            <span class="material-symbols-outlined text-secondary">check_circle</span>
+            Bold House-Made Seasonings
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="text-center w-full py-stack-md border-t border-outline-variant">
+      <h2 class="font-headline-lg text-3xl md:text-headline-lg text-secondary mb-stack-sm uppercase">Beyond the Bag</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter mt-8">
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-5xl text-primary-fixed">school</span>
+          <h3 class="font-headline-md text-headline-md">Student Picks</h3>
+          <p class="text-sm text-on-surface-variant">Affordable packs designed for late-night study sessions.</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-5xl text-primary-fixed">movie</span>
+          <h3 class="font-headline-md text-headline-md">Movie Kits</h3>
+          <p class="text-sm text-on-surface-variant">Extra large buckets for the ultimate cinematic experience.</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-5xl text-primary-fixed">celebration</span>
+          <h3 class="font-headline-md text-headline-md">Bulk & Events</h3>
+          <p class="text-sm text-on-surface-variant">Wholesale pricing for parties, weddings, and more.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="bg-inverse-surface dark:bg-surface-container-lowest w-full rounded-t-lg border-t-4 border-primary-fixed">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start px-margin py-stack-md max-w-container-max-width mx-auto gap-gutter">
+      <div class="flex flex-col gap-4">
+        <a class="flex items-center" href="../index.html">
+          <img src="../pictures/Poprush-logo.png" alt="POPRUSH" class="h-10 object-contain" />
+          <span
+            class="font-display-lg text-xl font-black tracking-tighter text-primary-fixed dark:text-primary ml-2">POPRUSH</span>
+        </a>
+        <p class="font-body-md text-body-md text-tertiary-fixed-dim">
+          © POPRUSH Popcorn Co. Every Pop Hits Different.
+        </p>
+      </div>
+      <nav class="flex flex-col md:flex-row gap-6 md:gap-gutter">
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors"
+          href="#">Privacy Policy</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors"
+          href="#">Terms of Service</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors"
+          href="#">Shipping Info</a>
+        <a class="font-body-md text-body-md text-tertiary-fixed-dim hover:text-primary-fixed transition-colors"
+          href="contact.html">Wholesale</a>
+      </nav>
+      <div class="flex gap-4 items-center">
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://www.facebook.com/profile.php?id=61589893824048" target="_blank" aria-label="Facebook">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z" />
+          </svg>
+        </a>
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://www.instagram.com/poprush.ph?igsh=ZjNlZjljM2J3cW56" target="_blank" aria-label="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </a>
+        <a class="text-tertiary-fixed-dim hover:text-primary-fixed transition-colors hover:scale-110 active:scale-95"
+          href="https://vt.tiktok.com/ZSxeWQAFx/" target="_blank" aria-label="TikTok">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1 .05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

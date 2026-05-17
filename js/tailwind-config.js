@@ -1,0 +1,146 @@
+tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "tertiary-fixed-dim": "#c6c6c7",
+                                                "secondary": "#bb0018",
+                                                "surface-variant": "#e5e2e1",
+                                                "surface-dim": "#dcd9d9",
+                                                "primary-fixed": "#ffe173",
+                                                "on-primary-fixed": "#221b00",
+                                                "primary": "#705d00",
+                                                "on-tertiary": "#ffffff",
+                                                "outline-variant": "#d0c6ad",
+                                                "outline": "#7e7761",
+                                                "secondary-fixed": "#ffdad6",
+                                                "on-secondary-fixed": "#410003",
+                                                "on-tertiary-container": "#5f6061",
+                                                "background": "#fcf9f8",
+                                                "tertiary": "#5d5f5f",
+                                                "primary-fixed-dim": "#e8c426",
+                                                "surface-bright": "#fcf9f8",
+                                                "surface-container-high": "#ebe7e7",
+                                                "on-tertiary-fixed-variant": "#454747",
+                                                "on-error": "#ffffff",
+                                                "surface-container-highest": "#e5e2e1",
+                                                "surface-container": "#f0edec",
+                                                "on-background": "#1c1b1b",
+                                                "inverse-on-surface": "#f3f0ef",
+                                                "secondary-container": "#e1262c",
+                                                "on-tertiary-fixed": "#1a1c1c",
+                                                "on-error-container": "#93000a",
+                                                "surface-container-lowest": "#ffffff",
+                                                "tertiary-container": "#dbdcdc",
+                                                "on-secondary-fixed-variant": "#930010",
+                                                "inverse-surface": "#313030",
+                                                "on-primary-fixed-variant": "#554500",
+                                                "surface-container-low": "#f6f3f2",
+                                                "on-secondary": "#ffffff",
+                                                "on-surface": "#1c1b1b",
+                                                "secondary-fixed-dim": "#ffb3ac",
+                                                "primary-container": "#ffd93d",
+                                                "on-primary": "#ffffff",
+                                                "on-surface-variant": "#4d4633",
+                                                "on-primary-container": "#725e00",
+                                                "on-secondary-container": "#fffbff",
+                                                "error": "#ba1a1a",
+                                                "error-container": "#ffdad6",
+                                                "tertiary-fixed": "#e2e2e2",
+                                                "inverse-primary": "#e8c426",
+                                                "surface": "#fcf9f8",
+                                                "surface-tint": "#705d00"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "1rem",
+                                                "lg": "2rem",
+                                                "xl": "3rem",
+                                                "full": "9999px"
+                                        },
+                                        "spacing": {
+                                                "stack-md": "32px",
+                                                "stack-sm": "16px",
+                                                "container-max-width": "1280px",
+                                                "margin": "32px",
+                                                "gutter": "24px",
+                                                "unit": "8px",
+                                                "stack-lg": "64px"
+                                        },
+                                        "fontFamily": {
+                                                "label-md": [
+                                                        "Montserrat"
+                                                ],
+                                                "body-md": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "body-lg": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "headline-lg": [
+                                                        "Montserrat"
+                                                ],
+                                                "headline-md": [
+                                                        "Montserrat"
+                                                ],
+                                                "display-lg": [
+                                                        "Montserrat"
+                                                ],
+                                                "headline-lg-mobile": [
+                                                        "Montserrat"
+                                                ]
+                                        },
+                                        "fontSize": {
+                                                "label-md": [
+                                                        "14px",
+                                                        {
+                                                                "lineHeight": "1.0",
+                                                                "fontWeight": "700"
+                                                        }
+                                                ],
+                                                "body-md": [
+                                                        "16px",
+                                                        {
+                                                                "lineHeight": "1.6",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "body-lg": [
+                                                        "18px",
+                                                        {
+                                                                "lineHeight": "1.6",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "headline-lg": [
+                                                        "40px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "fontWeight": "800"
+                                                        }
+                                                ],
+                                                "headline-md": [
+                                                        "24px",
+                                                        {
+                                                                "lineHeight": "1.3",
+                                                                "fontWeight": "700"
+                                                        }
+                                                ],
+                                                "display-lg": [
+                                                        "64px",
+                                                        {
+                                                                "lineHeight": "1.1",
+                                                                "letterSpacing": "-0.02em",
+                                                                "fontWeight": "900"
+                                                        }
+                                                ],
+                                                "headline-lg-mobile": [
+                                                        "32px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "fontWeight": "800"
+                                                        }
+                                                ]
+                                        }
+                                },
+                        },
+                }

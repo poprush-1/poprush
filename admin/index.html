@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login – POPRUSH</title>
+  <meta name="description" content="PopRush Admin Panel — Manage orders, inventory, and notifications.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="../pictures/Poprush-logo.png">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="js/admin-config.js"></script>
+</head>
+
+<body class="login-bg">
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <div class="login-card w-full max-w-md p-10">
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <img src="../pictures/Poprush-logo.png" alt="POPRUSH" class="h-14 object-contain">
+          <span class="font-display-lg text-3xl font-black tracking-tighter text-secondary"
+            style="font-family: Montserrat;">POPRUSH</span>
+        </div>
+        <h1 class="font-headline-md text-headline-md text-on-surface mb-1" style="font-family: Montserrat;">Admin
+          Portal</h1>
+        <p class="text-on-surface-variant text-sm" style="font-family: 'Plus Jakarta Sans';">Sign in to manage your
+          store</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="space-y-5">
+        <!-- Username -->
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant tracking-wide"
+            style="font-family: Montserrat;">Username</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+              style="font-variation-settings: 'FILL' 0">person</span>
+            <input type="text" id="adminUser" class="login-input pl-10" placeholder="Enter your username" required
+              autocomplete="username">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant tracking-wide"
+            style="font-family: Montserrat;">Password</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+              style="font-variation-settings: 'FILL' 0">lock</span>
+            <input type="password" id="adminPass" class="login-input pl-10 pr-10" placeholder="Enter your password" required
+              autocomplete="current-password">
+            <button type="button" id="togglePass"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-secondary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="loginError"
+          class="hidden bg-error-container text-on-error-container text-sm font-semibold px-4 py-3 rounded-xl flex items-center gap-2"
+          style="font-family: 'Plus Jakarta Sans';">
+          <span class="material-symbols-outlined text-[18px]">error</span>
+          <span id="loginErrorMsg">Invalid credentials</span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="login-btn" id="loginBtn">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="mt-8 text-center">
+        <p class="text-xs text-on-surface-variant" style="font-family: 'Plus Jakarta Sans';">
+          <a href="../index.html" class="text-secondary hover:underline font-semibold">← Back to Store</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Default admin credentials
+    const DEFAULT_ADMIN = { username: 'admin', password: 'admin' };
+
+    // Check if already logged in
+    if (localStorage.getItem('poprushAdminAuth') === 'true') {
+      window.location.href = 'screens/dashboard.html';
+    }
+
+    // Initialize default admin credentials if not set
+    if (!localStorage.getItem('poprushAdminCreds')) {
+      localStorage.setItem('poprushAdminCreds', JSON.stringify(DEFAULT_ADMIN));
+    }
+
+    // Toggle password visibility
+    document.getElementById('togglePass').addEventListener('click', function () {
+      const passInput = document.getElementById('adminPass');
+      const icon = this.querySelector('.material-symbols-outlined');
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        icon.textContent = 'visibility';
+      } else {
+        passInput.type = 'password';
+        icon.textContent = 'visibility_off';
+      }
+    });
+
+    // Login form submission
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const user = document.getElementById('adminUser').value.trim();
+      const pass = document.getElementById('adminPass').value;
+      const errorEl = document.getElementById('loginError');
+      const errorMsg = document.getElementById('loginErrorMsg');
+      const btn = document.getElementById('loginBtn');
+
+      // Get stored credentials
+      const creds = JSON.parse(localStorage.getItem('poprushAdminCreds'));
+
+      if (user === creds.username && pass === creds.password) {
+        errorEl.classList.add('hidden');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]" style="font-variation-settings: \'FILL\' 0">progress_activity</span> Signing in...';
+
+        // Set auth session
+        localStorage.setItem('poprushAdminAuth', 'true');
+        localStorage.setItem('poprushAdminUser', user);
+
+        // Initialize sample data if first time
+        initializeSampleData();
+
+        setTimeout(() => {
+          window.location.href = 'screens/dashboard.html';
+        }, 800);
+      } else {
+        errorMsg.textContent = 'Invalid username or password. Please try again.';
+        errorEl.classList.remove('hidden');
+        document.getElementById('adminPass').value = '';
+        document.getElementById('adminPass').focus();
+      }
+    });
+
+    function initializeSampleData() {
+      // Initialize inventory if not set
+      if (!localStorage.getItem('poprushInventory')) {
+        const inventory = [
+          { id: 1, name: 'Caramel Blast', image: 'Caramel Blast.jpg', stock: { Small: 50, Regular: 60, Large: 40 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Rich and buttery caramel-coated popcorn', category: 'Sweet' },
+          { id: 2, name: 'Spicy BBQ', image: 'Spicy BBQ.jpg', stock: { Small: 40, Regular: 50, Large: 30 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Bold and smoky BBQ with a spicy kick', category: 'Spicy' },
+          { id: 3, name: 'White Cheddar', image: 'White Cheddar.jpg', stock: { Small: 70, Regular: 80, Large: 50 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Creamy, tangy white cheddar cheese', category: 'Savory' },
+          { id: 4, name: 'Choco Drizzle', image: 'Choco Drizzle.jpg', stock: { Small: 30, Regular: 30, Large: 20 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Decadent chocolate drizzled popcorn', category: 'Sweet' },
+          { id: 5, name: 'Matcha Melt', image: 'Matcha Melt.jpg', stock: { Small: 20, Regular: 25, Large: 15 }, prices: { Small: 69, Regular: 89, Large: 129 }, status: 'active', description: 'Premium Japanese matcha flavor', category: 'Unique' }
+        ];
+        localStorage.setItem('poprushInventory', JSON.stringify(inventory));
+      }
+
+      // Initialize orders if not set
+      if (!localStorage.getItem('poprushOrders')) {
+        const orders = [
+          {
+            orderId: 'PR-482910', date: '5/14/2026, 2:30 PM', status: 'pending',
+            customer: { name: 'Maria Santos', phone: '09171234567', email: 'maria@email.com', address: '123 Rizal St, Manila' },
+            items: [{ name: 'Caramel Blast', size: 'Regular', qty: 2 }, { name: 'Spicy BBQ', size: 'Large', qty: 1 }],
+            total: 307
+          },
+          {
+            orderId: 'PR-381726', date: '5/14/2026, 11:15 AM', status: 'processing',
+            customer: { name: 'Juan Dela Cruz', phone: '09281234567', email: 'juan@email.com', address: '456 EDSA, Quezon City' },
+            items: [{ name: 'White Cheddar', size: 'Small', qty: 3 }],
+            total: 207
+          },
+          {
+            orderId: 'PR-294517', date: '5/13/2026, 5:45 PM', status: 'delivered',
+            customer: { name: 'Ana Reyes', phone: '09351234567', email: 'ana@email.com', address: '789 Shaw Blvd, Pasig' },
+            items: [{ name: 'Choco Drizzle', size: 'Regular', qty: 1 }, { name: 'Matcha Melt', size: 'Regular', qty: 1 }],
+            total: 178
+          }
+        ];
+        localStorage.setItem('poprushOrders', JSON.stringify(orders));
+      }
+
+      // Initialize notifications if not set
+      if (!localStorage.getItem('poprushNotifications')) {
+        const notifications = [
+          { id: 1, type: 'order', title: 'New Order Received', message: 'Maria Santos placed order PR-482910 worth ₱307', time: '5/14/2026, 2:30 PM', read: false },
+          { id: 2, type: 'stock', title: 'Low Stock Alert', message: 'Matcha Melt is running low (60 units remaining)', time: '5/14/2026, 10:00 AM', read: false },
+          { id: 3, type: 'order', title: 'Order Processing', message: 'Order PR-381726 has been moved to processing', time: '5/14/2026, 11:30 AM', read: true }
+        ];
+        localStorage.setItem('poprushNotifications', JSON.stringify(notifications));
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – POPRUSH Admin</title>
+  <meta name="description" content="PopRush Admin Dashboard — Monitor orders, manage inventory, and track notifications.">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../pictures/Poprush-logo.png">
+  <link rel="stylesheet" href="../css/admin.css">
+  <script src="../js/admin-config.js"></script>
+</head>
+
+<body class="bg-background text-on-background" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+  <!-- ═══ Sidebar ═══ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <!-- Logo -->
+    <div class="px-5 py-6 flex items-center gap-3 border-b border-white/10">
+      <img src="../../pictures/Poprush-logo.png" alt="POPRUSH" class="h-10 object-contain">
+      <div>
+        <span class="text-white font-black text-lg tracking-tight" style="font-family:Montserrat">POPRUSH</span>
+        <p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">Admin Panel</p>
+      </div>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="flex-1 py-4 overflow-y-auto">
+      <p class="text-white/30 text-[10px] font-bold uppercase tracking-widest px-5 mb-3"
+        style="font-family:Montserrat">Menu</p>
+      <a class="sidebar-link active" data-tab="overview" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">dashboard</span>
+        Dashboard
+      </a>
+      <a class="sidebar-link" data-tab="orders" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">receipt_long</span>
+        Orders
+        <span class="sidebar-badge notif-count" style="display:none">0</span>
+      </a>
+      <a class="sidebar-link" data-tab="inventory" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">inventory_2</span>
+        Inventory
+      </a>
+      <a class="sidebar-link" data-tab="notifications" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">notifications</span>
+        Notifications
+        <span class="sidebar-badge notif-count" style="display:none">0</span>
+      </a>
+
+      <p class="text-white/30 text-[10px] font-bold uppercase tracking-widest px-5 mt-6 mb-3"
+        style="font-family:Montserrat">Account</p>
+      <a class="sidebar-link" data-tab="settings" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">settings</span>
+        Settings
+      </a>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="px-5 py-4 border-t border-white/10">
+      <a href="../../index.html"
+        class="sidebar-link !mx-0 !px-3 text-white/50 hover:text-white text-xs">
+        <span class="material-symbols-outlined text-[18px]">storefront</span>
+        View Store
+      </a>
+      <button onclick="adminLogout()"
+        class="sidebar-link !mx-0 !px-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 text-xs w-full">
+        <span class="material-symbols-outlined text-[18px]">logout</span>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══ Main Content ═══ -->
+  <div class="admin-main" id="adminMain">
+    <!-- Top Bar -->
+    <header class="admin-topbar">
+      <div class="flex items-center gap-3">
+        <button id="sidebarToggle" class="lg:hidden p-2 rounded-xl hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+        <h1 id="pageTitle" class="font-bold text-xl text-on-surface" style="font-family:Montserrat">Dashboard</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="document.querySelectorAll('[data-tab=notifications]')[0].click()"
+          class="relative p-2 rounded-xl hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined text-[24px]">notifications</span>
+          <span
+            class="notif-count absolute top-1 right-1 bg-secondary text-white text-[9px] font-bold min-w-[16px] h-4 rounded-full flex items-center justify-center px-1"
+            style="display:none">0</span>
+        </button>
+        <div
+          class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-white font-bold text-sm"
+          style="font-family:Montserrat">A</div>
+      </div>
+    </header>
+
+    <!-- ═══════════ OVERVIEW SECTION ═══════════ -->
+    <section data-section="overview" class="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="kpi-card red">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+              <span class="material-symbols-outlined text-secondary text-[22px]"
+                style="font-variation-settings:'FILL' 1">shopping_cart</span>
+            </div>
+          </div>
+          <p class="text-2xl sm:text-3xl font-black text-on-surface" id="kpiOrders" style="font-family:Montserrat">0
+          </p>
+          <p class="text-xs text-on-surface-variant font-semibold mt-1">Total Orders</p>
+        </div>
+        <div class="kpi-card gold">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-primary-fixed/30 flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-[22px]"
+                style="font-variation-settings:'FILL' 1">payments</span>
+            </div>
+          </div>
+          <p class="text-2xl sm:text-3xl font-black text-on-surface" id="kpiRevenue" style="font-family:Montserrat">₱0
+          </p>
+          <p class="text-xs text-on-surface-variant font-semibold mt-1">Total Revenue</p>
+        </div>
+        <div class="kpi-card blue">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+              <span class="material-symbols-outlined text-blue-600 text-[22px]"
+                style="font-variation-settings:'FILL' 1">pending_actions</span>
+            </div>
+          </div>
+          <p class="text-2xl sm:text-3xl font-black text-on-surface" id="kpiPending" style="font-family:Montserrat">0
+          </p>
+          <p class="text-xs text-on-surface-variant font-semibold mt-1">Pending Orders</p>
+        </div>
+        <div class="kpi-card green">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+              <span class="material-symbols-outlined text-green-600 text-[22px]"
+                style="font-variation-settings:'FILL' 1">inventory_2</span>
+            </div>
+          </div>
+          <p class="text-2xl sm:text-3xl font-black text-on-surface" id="kpiProducts" style="font-family:Montserrat">0
+          </p>
+          <p class="text-xs text-on-surface-variant font-semibold mt-1">Products</p>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="bg-white rounded-2xl border border-outline-variant overflow-hidden">
+        <div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+          <h2 class="font-bold text-lg text-on-surface" style="font-family:Montserrat">Recent Orders</h2>
+          <button onclick="document.querySelectorAll('[data-tab=orders]')[0].click()"
+            class="text-secondary text-sm font-bold hover:underline" style="font-family:Montserrat">View All →</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th class="hidden sm:table-cell">Items</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="recentOrders">
+              <tr>
+                <td colspan="5" class="text-center py-8 text-on-surface-variant">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ ORDERS SECTION ═══════════ -->
+    <section data-section="orders" style="display:none" class="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button data-filter="all" class="btn-admin-secondary active" onclick="adminSetOrderFilter('all')">
+          All <span id="filterAll" class="ml-1 text-secondary">0</span>
+        </button>
+        <button data-filter="pending" class="btn-admin-secondary" onclick="adminSetOrderFilter('pending')">
+          <span class="w-2 h-2 rounded-full bg-yellow-500"></span> Pending <span id="filterPending"
+            class="ml-1">0</span>
+        </button>
+        <button data-filter="processing" class="btn-admin-secondary" onclick="adminSetOrderFilter('processing')">
+          <span class="w-2 h-2 rounded-full bg-blue-500"></span> Processing <span id="filterProcessing"
+            class="ml-1">0</span>
+        </button>
+        <button data-filter="delivered" class="btn-admin-secondary" onclick="adminSetOrderFilter('delivered')">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span> Delivered <span id="filterDelivered"
+            class="ml-1">0</span>
+        </button>
+      </div>
+
+      <!-- Orders Table -->
+      <div class="bg-white rounded-2xl border border-outline-variant overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th class="hidden md:table-cell">Items</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td colspan="6" class="text-center py-8 text-on-surface-variant">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ INVENTORY SECTION ═══════════ -->
+    <section data-section="inventory" style="display:none" class="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
+      <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+        <p class="text-on-surface-variant text-sm">Manage your product catalog and stock levels</p>
+        <button onclick="adminShowAddProduct()" class="btn-admin-primary">
+          <span class="material-symbols-outlined text-[18px]">add</span> Add Product
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="inventoryGrid">
+        <div class="col-span-full text-center py-8 text-on-surface-variant">Loading...</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ NOTIFICATIONS SECTION ═══════════ -->
+    <section data-section="notifications" style="display:none" class="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
+      <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+        <p class="text-on-surface-variant text-sm">Stay updated with order activity and stock alerts</p>
+        <div class="flex gap-2">
+          <button onclick="adminMarkAllRead()" class="btn-admin-secondary text-xs">
+            <span class="material-symbols-outlined text-[16px]">done_all</span> Mark All Read
+          </button>
+          <button onclick="adminClearNotifications()" class="btn-admin-danger text-xs">
+            <span class="material-symbols-outlined text-[16px]">delete_sweep</span> Clear All
+          </button>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-outline-variant overflow-hidden" id="notifList">
+        <div class="text-center py-8 text-on-surface-variant">Loading...</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SETTINGS SECTION ═══════════ -->
+    <section data-section="settings" style="display:none" class="p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8">
+      <div class="max-w-xl">
+        <div class="bg-white rounded-2xl border border-outline-variant p-6 sm:p-8">
+          <h3 class="font-bold text-lg mb-1 text-on-surface" style="font-family:Montserrat">Admin Credentials</h3>
+          <p class="text-sm text-on-surface-variant mb-6">Update your login credentials</p>
+          <form onsubmit="adminSaveSettings(event)" class="space-y-5">
+            <div>
+              <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+                style="font-family:Montserrat">Username</label>
+              <input type="text" id="settingsUsername" class="admin-input" required>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+                style="font-family:Montserrat">Current Password</label>
+              <input type="password" id="settingsCurrentPass" class="admin-input"
+                placeholder="Required to change password">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+                style="font-family:Montserrat">New Password</label>
+              <input type="password" id="settingsNewPass" class="admin-input" placeholder="Leave blank to keep current"
+                minlength="6">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+                style="font-family:Montserrat">Confirm New Password</label>
+              <input type="password" id="settingsConfirmPass" class="admin-input" placeholder="Re-enter new password">
+            </div>
+            <button type="submit" class="btn-admin-primary">
+              <span class="material-symbols-outlined text-[18px]">save</span> Save Changes
+            </button>
+          </form>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="bg-white rounded-2xl border border-error/30 p-6 sm:p-8 mt-6">
+          <h3 class="font-bold text-lg mb-1 text-error" style="font-family:Montserrat">Danger Zone</h3>
+          <p class="text-sm text-on-surface-variant mb-4">These actions cannot be undone</p>
+          <div class="flex flex-wrap gap-3">
+            <button onclick="if(confirm('Reset all orders?')){localStorage.removeItem('poprushOrders');location.reload()}"
+              class="btn-admin-danger text-xs">
+              <span class="material-symbols-outlined text-[16px]">delete</span> Clear All Orders
+            </button>
+            <button
+              onclick="if(confirm('Reset inventory to defaults?')){localStorage.removeItem('poprushInventory');location.reload()}"
+              class="btn-admin-danger text-xs">
+              <span class="material-symbols-outlined text-[16px]">restart_alt</span> Reset Inventory
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══ Mobile Bottom Navigation ═══ -->
+  <nav class="mobile-bottom-nav">
+    <a class="mobile-nav-item active" data-mobile-tab="overview" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">dashboard</span>
+      Home
+    </a>
+    <a class="mobile-nav-item" data-mobile-tab="orders" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">receipt_long</span>
+      Orders
+    </a>
+    <a class="mobile-nav-item" data-mobile-tab="inventory" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">inventory_2</span>
+      Stock
+    </a>
+    <a class="mobile-nav-item" data-mobile-tab="notifications" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">notifications</span>
+      Alerts
+      <span class="mobile-nav-badge notif-count" style="display:none">0</span>
+    </a>
+    <a class="mobile-nav-item" data-mobile-tab="settings" href="#">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">settings</span>
+      Settings
+    </a>
+  </nav>
+
+  <!-- ═══ Order Detail Modal ═══ -->
+  <div class="admin-modal-overlay" id="orderDetailModal">
+    <div class="admin-modal">
+      <div class="flex justify-between items-center px-6 py-4 border-b border-outline-variant">
+        <h3 class="font-bold text-lg" style="font-family:Montserrat">Order Details</h3>
+        <button onclick="adminCloseModal('orderDetailModal')"
+          class="p-1 rounded-lg hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="p-6" id="orderDetailContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══ Product Modal ═══ -->
+  <div class="admin-modal-overlay" id="productModal">
+    <div class="admin-modal">
+      <div class="flex justify-between items-center px-6 py-4 border-b border-outline-variant">
+        <h3 class="font-bold text-lg" style="font-family:Montserrat" id="productModalTitle">Add Product</h3>
+        <button onclick="adminCloseModal('productModal')"
+          class="p-1 rounded-lg hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form class="p-6 space-y-4" id="productForm" onsubmit="adminSaveProduct(event)">
+        <input type="hidden" id="productId">
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+            style="font-family:Montserrat">Product Name</label>
+          <input type="text" id="productName" class="admin-input" required placeholder="e.g. Caramel Blast">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+            style="font-family:Montserrat">Image Filename</label>
+          <input type="text" id="productImage" class="admin-input" required
+            placeholder="e.g. Caramel Blast.jpg">
+          <p class="text-[11px] text-on-surface-variant mt-1">File must exist in the /pictures/ folder</p>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+            style="font-family:Montserrat">Description</label>
+          <textarea id="productDesc" class="admin-input" rows="2"
+            placeholder="Short product description"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="col-span-2">
+            <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+              style="font-family:Montserrat">Stock (Units)</label>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="block text-[10px] text-on-surface-variant mb-1">Small</label>
+                <input type="number" id="productStockSmall" class="admin-input" required min="0" value="0">
+              </div>
+              <div>
+                <label class="block text-[10px] text-on-surface-variant mb-1">Regular</label>
+                <input type="number" id="productStockRegular" class="admin-input" required min="0" value="0">
+              </div>
+              <div>
+                <label class="block text-[10px] text-on-surface-variant mb-1">Large</label>
+                <input type="number" id="productStockLarge" class="admin-input" required min="0" value="0">
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+              style="font-family:Montserrat">Category</label>
+            <select id="productCategory" class="admin-select">
+              <option value="Sweet">Sweet</option>
+              <option value="Spicy">Spicy</option>
+              <option value="Savory">Savory</option>
+              <option value="Unique">Unique</option>
+            </select>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+              style="font-family:Montserrat">Status</label>
+            <select id="productStatus" class="admin-select">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-2 text-on-surface-variant"
+            style="font-family:Montserrat">Pricing (₱)</label>
+          <div class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[10px] text-on-surface-variant mb-1">Small</label>
+              <input type="number" id="productPriceSmall" class="admin-input" required min="0" value="69">
+            </div>
+            <div>
+              <label class="block text-[10px] text-on-surface-variant mb-1">Regular</label>
+              <input type="number" id="productPriceRegular" class="admin-input" required min="0" value="89">
+            </div>
+            <div>
+              <label class="block text-[10px] text-on-surface-variant mb-1">Large</label>
+              <input type="number" id="productPriceLarge" class="admin-input" required min="0" value="129">
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button type="button" onclick="adminCloseModal('productModal')" class="btn-admin-secondary flex-1 justify-center">Cancel</button>
+          <button type="submit" class="btn-admin-primary flex-1 justify-center">
+            <span class="material-symbols-outlined text-[18px]">save</span> Save Product
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+
+</html>

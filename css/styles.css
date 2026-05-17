@@ -1,0 +1,48 @@
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Global Red Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fcf9f8;
+}
+::-webkit-scrollbar-thumb {
+  background: #bb0018;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #990014;
+}
+  .carousel-btn {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--color-surface, #fff);
+    border: 2px solid var(--color-outline-variant, #d0c6ad);
+    color: var(--color-on-surface, #1c1b1b);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .carousel-btn:hover {
+    background: #bb0018; border-color: #bb0018; color: white;
+    scale: 1.1;
+  }
+
+/* Card Center Focus Effect */
+  .carousel-card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .carousel-card.is-active {
+    transform: scale(1.0);
+    opacity: 1;
+    z-index: 10;
+  }
+  .carousel-card:not(.is-active) {
+    transform: scale(0.9);
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+body { background-color: #fcf9f8; color: #1c1b1b; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
